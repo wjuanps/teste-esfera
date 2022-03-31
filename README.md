@@ -27,7 +27,7 @@ composer install
 Copy .env.exemple to .env and configure the database
 
 ```bash
-cp .env.exemple .env
+cp .env.example .env
 ```
 
 Generate project key
