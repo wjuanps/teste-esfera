@@ -86,7 +86,7 @@ class Employee extends Model {
   }
 
   public function getEmployees($search = "") {
-    return $this->leftJoin('companies', 'employees.company_id', '=', 'companies.id')
+    return $this->join('companies', 'employees.company_id', '=', 'companies.id')
       ->where(function ($query) use ($search) {
         $query->where('employees.first_name', 'like', "%{$search}%")
           ->orWhere('employees.last_name', 'like', "%{$search}%")
@@ -94,6 +94,14 @@ class Employee extends Model {
           ->orWhere('companies.name', 'like', "%{$search}%")
           ->orWhere('companies.email', 'like', "%{$search}%");
       })
+      ->select(
+        'employees.id AS id',
+        DB::raw("CONCAT(employees.first_name, ' ', employees.last_name) AS full_name"),
+        'employees.phone AS phone',
+        'employees.email AS email',
+        'companies.id AS company_id',
+        'companies.name AS company_name'
+      )
       ->orderBy('employees.created_at', 'desc')
       ->paginate(10);
   }

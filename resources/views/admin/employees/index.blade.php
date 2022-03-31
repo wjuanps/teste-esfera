@@ -39,17 +39,17 @@
                   <tbody>
                     @foreach ($employees as $employee)
                       <tr>
-                        <th>{{ $employee->first_name . ' ' . $employee->last_name }}</th>
+                        <th>{{ $employee->full_name }}</th>
                         <td>{{ $employee->phone }}</td>
                         <td>{{ $employee->email }}</td>
                         <td>
-                          <a href="{{ Route('user_admin.company.show', $employee->company->id) }}" style="text-decoration: none">
-                            {{ $employee->company->name }}
+                          <a href="{{ Route('user_admin.company.show', $employee->company_id) }}" style="text-decoration: none">
+                            {{ $employee->company_name }}
                           </a>
                         </td>
                         <td>
-                          <a href="{{ Route('user_admin.employee.show', [ "company_id" => $employee->company->id, "employee_id" => $employee->id ]) }}"type="button" class="btn btn-secondary">Edit</a>
-                          <a type="button" data-modal-id="delete_employee" data-route="{{ Route('user_admin.employee.handle.delete', [ "company_id" => $employee->company->id, "employee_id" => $employee->id ]) }}" class="btn btn-danger modal_trigger_button">Delete</a>
+                          <a href="{{ Route('user_admin.employee.show', [ "company_id" => $employee->company_id, "employee_id" => $employee->id ]) }}"type="button" class="btn btn-secondary">Edit</a>
+                          <a type="button" data-modal-id="delete_employee" data-route="{{ Route('user_admin.employee.handle.delete', [ "company_id" => $employee->company_id, "employee_id" => $employee->id ]) }}" class="btn btn-danger modal_trigger_button">Delete</a>
                         </td>
                       </tr>
                     @endforeach
