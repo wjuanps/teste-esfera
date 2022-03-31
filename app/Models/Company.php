@@ -113,6 +113,10 @@ class Company extends Model {
     return $this->delete();
   }
 
+  public function getCompaniesCount() {
+    return $this->get()->count();
+  }
+
   public function associateLogo(Logo $logo) {
     $this->logo()->save($logo);
   }

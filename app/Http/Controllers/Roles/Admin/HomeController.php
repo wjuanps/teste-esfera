@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Roles\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 
@@ -15,9 +14,9 @@ class HomeController extends Controller {
    * @return \Illuminate\Contracts\Support\Renderable
    */
   public function index(Company $company, Employee $employee) {
-    $companies = $company->getCompanies();
-    $employees = $employee->getEmployees();
+    $companyCount  = $company->getCompaniesCount();
+    $employeeCount = $employee->getEmployeesCount();
 
-    return view('admin.home', compact('companies', 'employees'));
+    return view('admin.home', compact('companyCount', 'employeeCount'));
   }
 }

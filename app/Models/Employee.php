@@ -98,6 +98,10 @@ class Employee extends Model {
       ->paginate(10);
   }
 
+  public function getEmployeesCount() {
+    return $this->get()->count();
+  }
+
   public function company() {
     return $this->belongsTo(Company::class);
   }
