@@ -20,6 +20,13 @@ class CreateLogosTable extends Migration
       $table->string('file_id', 100);
       $table->string('mime_type', 30);
       $table->string('extension', 8);
+      $table->string('patch', 150)->nullable();
+
+      $table->string('company_id', 40)->nullable();
+      $table->foreign('company_id')
+        ->references('id')
+        ->on('companies')
+        ->onDelete('cascade');
 
       $table->timestamps();
     });

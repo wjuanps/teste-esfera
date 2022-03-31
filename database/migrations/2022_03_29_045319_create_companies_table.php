@@ -19,12 +19,6 @@ class CreateCompaniesTable extends Migration
       $table->string('email')->unique();
       $table->string('site')->nullable();
 
-      $table->string('logo_id', 40)->nullable();
-      $table->foreign('logo_id')->references('id')->on('logos');
-
-      $table->string('address_id', 40)->nullable();
-      $table->foreign('address_id')->references('id')->on('adresses');
-
       $table->timestamps();
     });
   }

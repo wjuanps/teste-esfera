@@ -15,16 +15,16 @@ class CreateEmployeesTable extends Migration
   {
     Schema::create('employees', function (Blueprint $table) {
       $table->string('id', 40)->primary();
-      $table->string('name');
+      $table->string('first_name');
       $table->string('last_name');
-      $table->string('phone');
-      $table->string('email')->unique();
+      $table->string('phone')->nullable();
+      $table->string('email')->unique()->nullable();
 
       $table->string('company_id', 40);
-      $table->foreign('company_id')->references('id')->on('companies');
-
-      $table->string('address_id', 40)->nullable();
-      $table->foreign('address_id')->references('id')->on('adresses');
+      $table->foreign('company_id')
+        ->references('id')
+        ->on('companies')
+        ->onDelete('cascade');
 
       $table->timestamps();
     });
