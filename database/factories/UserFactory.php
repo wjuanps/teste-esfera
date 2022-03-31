@@ -16,11 +16,9 @@ class UserFactory extends Factory
   public function definition()
   {
     return [
-      'name' => 'User Teste',
-      'email' => 'admin@admin.com',
       'email_verified_at' => now(),
       'password' => Hash::make('senha'), // password
-      'remember_token' => Str::random(10),
+      'remember_token' => Str::random(20)
     ];
   }
 
